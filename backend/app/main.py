@@ -4,7 +4,7 @@ from app.models import ResolutionResponse, Resolution
 from app.utils import resolution_to_int
 from app.downloader import download_video
 from app.payments import create_order, verify_payment
-from app.config import FREE_MAX_RES, DOWNLOAD_DIR
+from app.config import FREE_MAX_RES, DOWNLOAD_DIR, CORS_WHITELISTED_CLIENTS
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse
 import mimetypes
@@ -14,10 +14,7 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:5173",
-        "http://127.0.0.1:5173"
-    ],
+    allow_origins=CORS_WHITELISTED_CLIENTS,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
