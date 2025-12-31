@@ -83,8 +83,8 @@ export default function ResolutionPicker({ url, resolutions }: Props) {
                             <button
                                 onClick={async () => {
                                     // Free resolution → direct download allowed
-                                    const response = await axios.post(
-                                        "http://localhost:8000/api/download",
+                                    const response = await axiosInstance.post(
+                                        "/api/download",
                                         null,
                                         {
                                             params: {
