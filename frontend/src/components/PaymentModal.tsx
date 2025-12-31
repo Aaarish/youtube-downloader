@@ -1,3 +1,4 @@
+import { axiosInstance } from "@/api";
 import axios from "axios";
 
 interface Props {
@@ -15,8 +16,8 @@ export default function PaymentModal({
 }: Props) {
     const handlePayment = async () => {
         // 1️⃣ Create order on backend
-        const orderRes = await axios.post(
-            "http://localhost:8000/api/payment/create"
+        const orderRes = await axiosInstance.post(
+            "/api/payment/create"
         );
 
         const { order_id, amount, currency } = orderRes.data;
@@ -31,8 +32,8 @@ export default function PaymentModal({
             order_id,
             handler: async function (response: any) {
                 // 3️⃣ Verify payment on backend
-                await axios.post(
-                    "http://localhost:8000/api/payment/verify",
+                await axiosInstance.post(
+                    "/api/payment/verify",
                     {
                         razorpay_order_id: response.razorpay_order_id,
                         razorpay_payment_id: response.razorpay_payment_id,

@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import PaymentModal from "./PaymentModal";
 import type { Resolution } from "../Home";
+import { axiosInstance } from "@/api";
 
 interface Props {
     url: string;
@@ -20,8 +21,8 @@ export default function ResolutionPicker({ url, resolutions }: Props) {
         try {
             setStatus("Preparing download...");
 
-            const response = await axios.post(
-                "http://localhost:8000/api/download",
+            const response = await axiosInstance.post(
+                "/api/download",
                 null,
                 {
                     params: {
