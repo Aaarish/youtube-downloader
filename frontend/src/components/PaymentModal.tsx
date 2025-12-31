@@ -1,5 +1,4 @@
 import { axiosInstance } from "@/api";
-import axios from "axios";
 
 interface Props {
     resolution: string;

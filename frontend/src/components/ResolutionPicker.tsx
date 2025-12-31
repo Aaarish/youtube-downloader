@@ -1,5 +1,4 @@
 import { useState } from "react";
-import axios from "axios";
 import PaymentModal from "./PaymentModal";
 import type { Resolution } from "../Home";
 import { axiosInstance } from "@/api";
